@@ -57,7 +57,7 @@ import org.slf4j.LoggerFactory;
  * for more details.
  *
  * @author Mark Underwood Copyright (C) 2011
- * @author Klaus Killinger Copyright (C) 2018-2022
+ * @author Klaus Killinger Copyright (C) 2018-2023
  */
 public class VSDecoderManager implements PropertyChangeListener {
 
@@ -902,6 +902,7 @@ public class VSDecoderManager implements PropertyChangeListener {
                 d.savedSound.setTunnel(blockPositionlists.get(d.setup_index).get(new_rp_index).isTunnel()); // set the tunnel status
                 log.debug("address {}: position to set: {}", d.getAddress(), d.posToSet);
                 d.setPosition(d.posToSet); // Sound set position
+                changeDirection(d, locoAddress, new_rp_index);
                 stopSoundPositionTimer(d);
                 startSoundPositionTimer(d); // timer restart
             } else {
@@ -985,7 +986,8 @@ public class VSDecoderManager implements PropertyChangeListener {
                         }
                     } else if (d.getLayoutTrack() instanceof LayoutTurnout
                             || d.getLayoutTrack() instanceof LayoutSlip
-                            || d.getLayoutTrack() instanceof LevelXing) {
+                            || d.getLayoutTrack() instanceof LevelXing
+                            || d.getLayoutTrack() instanceof LayoutTurntable) {
                         // go to next track
                         if (d.nextLayoutTrack != null) {
                             d.setLayoutTrack(d.nextLayoutTrack);
@@ -1095,7 +1097,7 @@ public class VSDecoderManager implements PropertyChangeListener {
                         calcNewPosition(d);
                         d.lastspeed = newspeed;
                     } else if (alf_version == 2) {
-                        if (d.getEngineSound().isEngineStarted() && d.currentspeed > 0.0f) {
+                        if ((d.getEngineSound().isEngineStarted() && d.currentspeed > 0.0f) || d.getLayoutTrack() instanceof LayoutTurntable) {
                             newspeed = d.currentspeed;
                             d.avgspeed = (newspeed + d.lastspeed) / 2f;
                             d.lastspeed = newspeed;
@@ -1121,7 +1123,7 @@ public class VSDecoderManager implements PropertyChangeListener {
                             d.posToSet.x = (float) loc2.getX();
                             d.posToSet.y = (float) loc2.getY();
                             d.posToSet.z = 0.0f;
-                            log.info("address {} position to set: {}", d.getAddress(), d.posToSet);
+                            log.debug("address {} position to set: {}, location: {}", d.getAddress(), d.posToSet, loc);
                             d.setPosition(d.posToSet);
                         }
                     }

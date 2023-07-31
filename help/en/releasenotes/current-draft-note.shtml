@@ -26,12 +26,18 @@
 
         <h4>C/MRI</h4>
             <ul>
-                <li></li>
+                <li>Provided an extra copy of the output data when preparing
+                C/MRI output data for a "T" ("Transmit") message type.  This 
+		prevents a "data buffer overrun" in a pre-configured buffer 
+		when the output data changes when the process assemble the data.
+		(The previous implementation could run out of available bytes 
+		in the buffer, and the data would not be sent.)</li>
             </ul>
 
         <h4>DCC++ and DCC-EX</h4>
             <ul>
-                <li></li>
+                <li>Call "Roster Export to DCC-EX" from DCC++ menu</li>
+                <li>Traffic Monitor - Added option to suppress the parsed text</li>
             </ul>
 
         <h4>DCC4pc</h4>
@@ -121,7 +127,15 @@
 
         <h4><a href="http://openlcb.org">OpenLCB</a> / LCC</h4>
             <ul>
-                <li></li>
+                <li>OpenLCB library updated through 
+                    <a href="https://github.com/openlcb/OpenLCB_Java/pulls">PR 231</a>.
+                    </li>
+                <li>Added a contextual menu (right click, ctrl click) to tabs in the CDI display that 
+                    contains "Copy" and "Paste" options. 
+                    Copy and paste works both within one window and across windows. 
+                    You can only paste into a tab of the same type from which you copied. 
+                    The data stored in the clipboard is in the format of the usual backup files.
+                    </li>
             </ul>
 
         <h4>Powerline</h4>
@@ -136,7 +150,8 @@
 
         <h4>Roco z21/Z21</h4>
             <ul>
-                <li></li>
+                <li>JMRI will now leave the layout power unchanged when it terminates.
+                    Previously, it would turn the power on if it was off.</li>
             </ul>
 
         <h4>Secsi</h4>
@@ -146,12 +161,14 @@
 
         <h4>SPROG</h4>
             <ul>
-                <li></li>
+                <li>
+                    Track power ON at startup option would turn on track power but not send packets, requiring track power to be cycled. Fixed.
+                </li>
             </ul>
 
         <h4>TAMS</h4>
             <ul>
-                <li></li>
+                <li>New decoder definition for the LD-G-9 decoder.</li>
             </ul>
 
         <h4>TMCC</h4>
@@ -216,7 +233,8 @@
 
         <h4>Doehler &amp; Haas</h4>
             <ul>
-                <li></li>
+                <li>added PD06A, PD18A, PD18MU and PD21A</li>
+                <li>disable unimplemented CV by PD-series</li>
             </ul>
 
         <h4>ESU</h4>
@@ -291,7 +309,7 @@
 
         <h4>QSI</h4>
             <ul>
-                <li></li>
+                <li>Added function labels for Ver 6 Steam and Diesel definitions</li>
             </ul>
 
         <h4>Rautenhaus</h4>
@@ -341,7 +359,7 @@
 
         <h4>Uhlenbrock</h4>
             <ul>
-                <li></li>
+                <li>Some translations to German and pane design changes</li>
             </ul>
 
         <h4>Umelec</h4>
@@ -361,8 +379,7 @@
 
         <h4>ZIMO</h4>
             <ul>
-                <li>Improve the layout of the Uncouple pane, make sure
-                    that it displays the Uncoupler variable (CV 115).</li>
+                <li></li>
             </ul>
 
         <h4>Miscellaneous</h4>
@@ -429,16 +446,13 @@
             <li></li>
         </ul>
 
-<h3>Operations</h3>
-<a id="Operations" name="Operations"></a>
-<ul>
-  <li>Improvements to the routing code. Program will not use an interchange track if the same
-    train can drop and pull a car.</li>
-  <li>Fixed a bug with export routes.</li>
-  <li>Fixed close on Save for several windows.</li>
-</ul>
+    <h3>Operations</h3>
+        <a id="Operations" name="Operations"></a>
+        <ul>
+            <li></li>
+        </ul>
 
-<h3>Panel Editor</h3>
+   <h3>Panel Editor</h3>
         <a id="PE" name="PE"></a>
         <ul>
             <li></li>
@@ -593,12 +607,14 @@
    <h3>Virtual Sound Decoder</h3>
         <a id="VSD" name="VSD"></a>
         <ul>
-            <li></li>
+            <li>Fixed a bug with wrong direction in an oval layout.</li>
+            <li>Minor change on the Manager window GUI. The windows for adding
+            a VSDecoder and to handle the option now are centered to the manager
+            window. This is not a functional change.</li>
         </ul>
 
     <h3>Miscellaneous</h3>
         <a id="Misc" name="Misc"></a>
         <ul>
-            <li></li>
+            <li>The external libraries used for Logging have been updated.</li>
         </ul>
-
