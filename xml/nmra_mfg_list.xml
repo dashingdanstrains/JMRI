@@ -216,5 +216,7 @@
       <manufacturer mfg="ZTC" mfgID="132" />
 
       <!-- we include Lionel as a special case to support TMCC -->
+      <!-- we include MTH as a special case to support DCS -->
       <manufacturer mfg="Lionel" mfgID="1001" />
+      <manufacturer mfg="MTH" mfgID="1002" />
 </mfgList>
